@@ -1,0 +1,18 @@
+# Config for standalone .rs files with auto-detection
+# Watches all .rs files and automatically compiles the most recently modified one
+# Copy this to your working directory as .rair.toml
+
+watch = ["."]
+include_ext = ["rs"]
+ignore = ["**/target/**", "**/.git/**"]
+debounce_ms = 250
+clear = true
+
+# Build: Find and compile the most recently modified .rs file
+build = [
+  "sh", "-c",
+  "FILE=$(find . -name '*.rs' -not -path '*/target/*' -printf '%T@ %p\\n' | sort -nr | head -n1 | cut -d' ' -f2-) && echo \"Compiling: $FILE\" && rustc \"$FILE\" -o /tmp/rair-out"
+]
+
+# Run the compiled binary
+run = ["/tmp/rair-out"]

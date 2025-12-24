@@ -1,0 +1,34 @@
+# Config for Cargo projects
+# Copy this to your Cargo project root as .rair.toml
+
+# Watch standard Cargo files
+watch = ["src", "Cargo.toml", "Cargo.lock"]
+ignore = ["**/target/**", "**/.git/**"]
+include_ext = ["rs", "toml"]
+debounce_ms = 250
+clear = true
+
+# Specify which binary to run (required for workspaces)
+bin = "my_app"
+
+# Optional: use release mode
+# release = true
+
+# Optional: specify features
+# features = ["feature1", "feature2"]
+# all_features = true
+
+# Hooks: format before building, test after building
+pre_build = [
+  ["cargo", "fmt"]
+]
+
+post_build = [
+  ["cargo", "test", "-q"]
+]
+
+# Optional: run clippy after tests pass
+# post_build = [
+#   ["cargo", "test", "-q"],
+#   ["cargo", "clippy", "--", "-D", "warnings"]
+# ]

@@ -1,0 +1,19 @@
+# Config for Cargo workspaces
+# Copy this to your workspace root as .rair.toml
+
+watch = ["src", "Cargo.toml", "Cargo.lock"]
+ignore = ["**/target/**", "**/.git/**"]
+include_ext = ["rs", "toml"]
+clear = true
+
+# Required for workspaces
+workspace = true
+package = "my_crate"
+bin = "my_bin"
+
+# Optional: release mode
+# release = true
+
+pre_build = [
+  ["cargo", "fmt", "--all"]
+]

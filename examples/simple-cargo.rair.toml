@@ -1,0 +1,5 @@
+# Minimal Cargo project config
+# Copy this to your Cargo project root as .rair.toml
+
+# Just specify the binary name - everything else uses defaults
+bin = "my_app"
