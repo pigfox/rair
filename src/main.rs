@@ -132,7 +132,7 @@ fn spawn_run_group(run: &[String]) -> Result<GroupChild> {
     c.env("RAIR_ACTIVE", "1");
 
     let child = c
-        .stdin(Stdio::null())
+        .stdin(Stdio::inherit())
         .stdout(Stdio::inherit())
         .stderr(Stdio::inherit())
         .group_spawn()
